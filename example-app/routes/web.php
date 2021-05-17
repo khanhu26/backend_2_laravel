@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller_company;
-
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\SearchController;
+use App\Http\Middleware\PerPage;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +20,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => [],
-'namespace' => 'App\Http\Controllers',
-], function(){
-    Route::get('companies',[
-        'as' => 'companies',
-        'uses' => 'Controller_company@getCompanies'
-    ]);
-});
 
+Route::get('/companies', [CompanyController::class, 'getCompanies'])
+    ->middleware('per_page');
+
+Route::get('/search', [SearchController::class, 'getSearch'])
+    ->middleware('name','per_page');
+
+Route::get('/trainers', [TrainerController::class, 'getTrainers'])->middleware('trainer_logic');
+
+
+Route::fallback(function () {
+    return view('404');
+})->name('NotFound');
+
+Route::get('/error', function () {
+    return view('error');
+})->name('Error');
