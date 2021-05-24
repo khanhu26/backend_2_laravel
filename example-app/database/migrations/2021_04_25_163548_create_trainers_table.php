@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,12 +15,11 @@ class CreateTrainersTable extends Migration
     public function up()
     {
         Schema::create('trainers', function (Blueprint $table) {
-            $table->increments('trainer_id');
-            $table->string('trainer_name', 55);
-            $table->integer('company_id');
-            $table->string('trainer_email', 55);
-            $table->string('trainer_phone', 55);
-            $table->timestamps();
+            $table->id('trainer_id');
+            $table->string('trainer_name',55);
+            $table->integer('company_id',false);
+            $table->string('trainer_email',55);
+            $table->string('trainer_phone',55);
         });
     }
 
