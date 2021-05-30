@@ -107,6 +107,12 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/.git/info" />
+      <path value="$PROJECT_DIR$/vendor/.git/refs" />
+      <path value="$PROJECT_DIR$/vendor/.git/objects" />
+      <path value="$PROJECT_DIR$/vendor/.git/logs" />
+      <path value="$PROJECT_DIR$/vendor/.git/hooks" />
+      <path value="$PROJECT_DIR$/vendor/.git/smartgit" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

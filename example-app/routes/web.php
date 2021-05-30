@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\SearchController;
 use App\Http\Middleware\PerPage;
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/companies', [CompanyController::class, 'getCompanies'])
+Route::get('/companies', [CompaniesController::class, 'companies'])
     ->middleware('per_page');
 
 Route::get('/search', [SearchController::class, 'getSearch'])
@@ -29,7 +30,8 @@ Route::get('/search', [SearchController::class, 'getSearch'])
 
 Route::get('/trainers', [TrainerController::class, 'getTrainers'])->middleware('trainer_logic');
 
-
+Route::get('/categories', [CategoriesController::class,'categories']);
+Route::get('/categoriescompanies', [CategoriesController::class,'categoriescompanies']);
 Route::fallback(function () {
     return view('404');
 })->name('NotFound');

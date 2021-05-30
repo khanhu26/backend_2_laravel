@@ -7,7 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trainer extends Model
 {
-    use HasFactory;
-
     protected $table = 'trainers';
+
+    public function search($value)
+    {
+        return self::where("trainer_name","LIKE","%{$value}%");
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'company_id', 'company_id');
+    }
 }

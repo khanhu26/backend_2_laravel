@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class Companies extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,15 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('company_id');
-            $table->string('company_name', 55);
-            $table->string('company_web', 255);
-            $table->string('company_address', 500);
-            $table->string('company_code', 55);
-            $table->string('company_phone', 55);
-            $table->timestamps();
+            $table->string('company_name',55);
+            $table->string('company_web',255);
+            $table->string('company_address',500);
+            $table->string('company_code',55);
+            $table->string('company_phone',55);
+            $table->integer('category_id',false);
         });
+
+
     }
 
     /**
