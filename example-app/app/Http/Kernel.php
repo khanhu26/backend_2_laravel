@@ -4,7 +4,6 @@ namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\PerPage;
-use App\Http\Middleware\trainer_logic;
 
 class Kernel extends HttpKernel
 {
@@ -66,6 +65,5 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'per_page' => \App\Http\Middleware\PerPage::class,
         'trainer_logic' => \App\Http\Middleware\trainer_logic::class,
-        'name' => \App\Http\Middleware\Name::class,
     ];
 }
