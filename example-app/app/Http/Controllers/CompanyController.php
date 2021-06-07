@@ -10,16 +10,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
 
-class SearchController extends Controller
+class CompanyController extends Controller
 {
-    public function getSearch(Request $request) {
+    public function getCompanies(Request $request) {
 
-        $per_page = $request->get('per_page');
-        $name = $request->get('name');
+        $per_page = $request->input('per_page');
 
         $obj = new Company();
-        $companies = $obj->where('company_name', 'like', "%$name%")->paginate($per_page);
+        $companies = $obj->paginate($per_page);
 
-        return view('search', ['search' => $companies]);
+        return view('companies', ['companies' => $companies]);
     }
 }
