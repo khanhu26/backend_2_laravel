@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\CustomAuthController;
 use App\Http\Middleware\PerPage;
 /*
 |--------------------------------------------------------------------------
@@ -23,16 +20,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/companies', [CompaniesController::class, 'companies'])
+Route::get('/companies', [CompanyController::class, 'getCompanies'])
     ->middleware('per_page');
 
-Route::get('/search', [SearchController::class, 'getSearch'])
-    ->middleware('name','per_page');
+Route::get('/trainers', [TrainerController::class, 'getTrainers'])
+->middleware('trainer_logic');
 
-Route::get('/trainers', [TrainerController::class, 'getTrainers'])->middleware('trainer_logic');
 
-Route::get('/categories', [CategoriesController::class,'categories']);
-Route::get('/categoriescompanies', [CategoriesController::class,'categoriescompanies']);
+
 Route::fallback(function () {
     return view('404');
 })->name('NotFound');
@@ -40,10 +35,3 @@ Route::fallback(function () {
 Route::get('/error', function () {
     return view('error');
 })->name('Error');
-
-Route::get('dashboard', [CustomAuthController::class, 'dashboard']);
-Route::get('login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
