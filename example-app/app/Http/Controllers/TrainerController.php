@@ -8,16 +8,26 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use App\Models\Trainer;
+use App\Models\Trainers;
 
 class TrainerController extends Controller
 {
     public function getTrainers(Request $request) {
 
-        $trainer_logic = $request->input('trainer_logic');
+        $per_page = $request->input('trainer_logic');
 
-        $obj = new Trainer();
-        $trainers = $obj->paginate($trainer_logic);
+//        //is null
+//        if (empty($per_page)) {
+//            $per_page = 10;
+//        }
+//
+//        //is string
+//        if (is_string($per_page)) {
+//            $per_page = 10;
+//        }
+
+        $obj = new Trainers();
+        $trainers = $obj->paginate($per_page);
 
         return view('trainers', ['trainers' => $trainers]);
     }

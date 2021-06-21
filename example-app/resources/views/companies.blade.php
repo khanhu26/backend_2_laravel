@@ -1,108 +1,56 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+@extends('layout')
+@section('content')
 
+    <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+            <span class="fs-4">Pricing example</span>
+        </a>
 
-    <title>Pricing example for Bootstrap</title>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-dark text-decoration-none" href="{{URL::to('/categories')}}">Categories</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="{{URL::to('/companies')}}">Companies</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="{{URL::to('/trainers')}}">Trainer</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="{{URL::to('/search')}}">Search</a>
+        </nav>
+    </header>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/">
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-
-</head>
-
-<body>
-
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Lập trình backend-web 2</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/companies">Companies</a>
-        <a class="p-2 text-dark" href="/trainers">Trainers</a>
-        <a class="p-2 text-dark" href="/search">Search</a>
-
-    </nav>
-
-</div>
-
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Companies</h1>
-
-</div>
-
-<div class="container">
-    <div class="row">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Web</th>
-                <th scope="col">Phone</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($companies as $company)
-                <tr>
-                    <th scope="row">{!! $company->company_id !!}</th>
-                    <td>{!! $company->company_name !!}</td>
-                    <td>{!! $company->company_web !!}</td>
-                    <td>{!! $company->company_phone !!}</td>
-                </tr>
-                @endforeach
-
-            </tbody>
-        </table>
-        {!! $companies->render() !!}
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal">List of Companies</h1>
+        <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
     </div>
+    <!-- table -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Adddress</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Trainer</th>
+            <th scope="col">Category</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-            <div class="col-12 col-md">
-                <img class="mb-2" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                <small class="d-block mb-3 text-muted">© 2017-2018</small>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Companies</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">List of companies</a></li>
+        @foreach($companies as $company)
+            <tr>
+                <th scope="row">{!!$company->company_id!!}</th>
+                <td>{!!$company->company_name!!}</td>
+                <td>{!!$company->company_address!!}</td>
+                <td>{!!$company->company_phone!!}</td>
+                <td>{!!@$company->trainer['trainer_name']!!}</td>
+                <td>
+                    @foreach($company->companyCat as $cat)
+                        {!!$cat['category_name']!!}
+                    @endforeach
+                </td>
 
+            </tr>
+        @endforeach
 
+        </tbody>
 
-
-
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>Trainers</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">List of trainers
-                        </a></li>
-
-
-
-                </ul>
-            </div>
-            <div class="col-6 col-md">
-                <h5>About</h5>
-                <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-
-
-
-                </ul>
-            </div>
-        </div>
-    </footer>
-</div>
-
-
-
-
-
-</body></html>
+    </table>
+    {{ $companies ->links()}}
+@endsection
