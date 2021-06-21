@@ -10,8 +10,8 @@ class PerPage
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -22,16 +22,19 @@ class PerPage
         if (empty($per_page)) {
             $per_page = 10;
         }
+
+        //is string
         if (!is_numeric($per_page)) {
             return redirect('error');
         }
 
-        $nhap =[10,20,30,50];
-        if (!in_array($per_page,$nhap)){
+        //
+        $Number = [10, 20, 30, 40, 50];
+        if (!in_array($per_page, $Number)) {
             $per_page = 10;
         }
 
-        $request->merge([ 'per_page' => $per_page]);
+        $request->merge(['per_page' => $per_page]);
 
         return $next($request);
     }
